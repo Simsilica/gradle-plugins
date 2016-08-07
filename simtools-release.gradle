@@ -63,6 +63,8 @@ bintray {
 
     dryRun = false
     publish = project.hasProperty('bintrayPublish') ? project.property('bintrayPublish') : false
+ 
+    println "Publish?:" + publish
     
     pkg {
         repo = 'Sim-tools'
