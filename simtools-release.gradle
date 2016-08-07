@@ -62,7 +62,7 @@ bintray {
     publications = ['MavenRelease']
 
     dryRun = false
-    publish = false
+    publish = project.hasProperty('bintrayPublish') ? project.property('bintrayPublish') : false
     
     pkg {
         repo = 'Sim-tools'
