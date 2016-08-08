@@ -62,9 +62,12 @@ bintray {
     publications = ['MavenRelease']
 
     dryRun = false
-    publish = project.hasProperty('bintrayPublish') ? project.property('bintrayPublish') : false
+    publish = (project.hasProperty('bintrayPublish') ? (project.property('bintrayPublish') == "true") : false)
  
-    println "Publish?:" + publish
+    println "Publish?:" + publish + "  bintrayPublish set?:" + project.hasProperty('bintrayPublish')
+    if( project.hasProperty('bintrayPublish') ) {
+        println "  bintrayPublish set to:" + project.property('bintrayPublish')
+    }  
     
     pkg {
         repo = 'Sim-tools'
@@ -74,7 +77,7 @@ bintray {
         websiteUrl = project.websiteUrl 
         vcsUrl = project.vcsUrl 
         githubRepo = project.githubRepo 
-        githubReleaseNotesFile = 'README.md'
+        githubReleaseNotesFile = 'release-notes.md'
         issueTrackerUrl = project.issueTrackerUrl 
         labels = project.bintrayLabels 
         publicDownloadNumbers = true
